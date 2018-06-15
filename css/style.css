@@ -1,0 +1,28 @@
+form {
+    width: 100%;
+    margin: 25px 0 25px 0;
+}
+
+main {
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+input {
+    margin-right: 4px;
+}
+
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+header {
+    margin-top: 30px;
+    text-align: center;
+}
+
+section {
+    margin-bottom: 20px;
+}
