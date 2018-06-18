@@ -36,7 +36,7 @@ const handleTracks = {
             console.log("there is a playlist saved!!")
         } else {
             const ultimatePlaylist = []; //Define ultimatePlaylist that will collect all the tracks
-            var newTrack = new track("Artist", "Song name"); //Construct a new example track
+            const newTrack = new track("Artist", "Song name"); //Construct a new example track
             ultimatePlaylist.push(newTrack) //Push the track to the ultimatePlaylist array
 
             localStorage.setItem("ultimatePlaylist", JSON.stringify(ultimatePlaylist)); //Save it to localStorage
@@ -46,32 +46,49 @@ const handleTracks = {
 
 const displayController = {
 
-    search: function() {
+    search: function(data) {
         
-
+        
+        let displaySearchedResult = document.getElementById("searchResults");
+        let content = ``;
+        for (let track of data) {
+            
+            for(let artist of track.artists) {
+                content += `
+                <li>${track.title} - ${artist.name}<button class="btn-sm btn-outline-primary col-2">+</button></li>
+                
+                `; 
+                
+                displaySearchedResult.innerHTML = content;
+                console.log(data);
+            }
+            
+        }
+        
+        
     }
 
 }
 
 
-//var factText = document.querySelector('#factText');
-var nameInput = document.querySelector('#search-form');
+//const factText = document.querySelector('#factText');
+const nameInput = document.querySelector('#search-form');
 
 nameInput.addEventListener('input', getFactFetch);
 
     // RÅ DATA Api
     function getFactFetch(){
-        var name = nameInput.value;
+        let name = nameInput.value;
         
         if(name != ''){ //3
-          fetch('https://folksa.ga/api/tracks?limit=1000&key=flat_eric')
+          fetch('https://folksa.ga/api/tracks?limit=10&key=flat_eric')
           .then(response => response.json())
           .then( data => {
           	data = data.filter( ( element ) => {
               return new RegExp( name, 'ig' ).test( element.title)
 
             } );
-            console.log(data);
+            displayController.search(data);
           })
           .catch(err => console.log(err)); 
         }    
