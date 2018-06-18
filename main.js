@@ -18,9 +18,10 @@ class getData {
 
 //Class & Constructor for creating tracks to the ultimatePlaylist
 class track {
-    constructor(artist, name) {
+    constructor(artist, name, id) {
         this.artist = artist;
         this.name = name;
+        this.id = id;
     }
 }
 
@@ -40,17 +41,19 @@ const handleTracks = {
         }
     },
     
-    addTrack: function(title, name) {
+    addTrack: function(title, name, id) {
         const ultimatePlaylist = JSON.parse(localStorage.getItem('ultimatePlaylist'));
-        let newTrack = new track(title, name)
+        let newTrack = new track(title, name, id)
         console.log(newTrack);
         ultimatePlaylist.push(newTrack) //Push the track to the ultimatePlaylist array
         localStorage.setItem("ultimatePlaylist", JSON.stringify(ultimatePlaylist)); //Save it to localStorage
     },
 
-    removeTrack: function(keyName) {
-        
-        localStorage.removeItem(keyName);
+    removeTrack: function(id) {
+        const ultimatePlaylist = JSON.parse(localStorage.getItem('ultimatePlaylist'));
+        theIndex = ultimatePlaylist.indexOf(id);
+
+        console.log(theIndex)
     }
 }
 
@@ -62,14 +65,16 @@ const displayController = {
         let content = `<h2>Search results</h2> `; 
         for (let track of data) {
             let title = track.title
+            let id = track._id;
 
             for(let artist of track.artists) {
                 let name = artist.name
                 
                 content += `
-                <li>${title} - ${name}<button onclick="handleTracks.addTrack(this.dataset.title, this.dataset.name)" data-title="${title}" data-name="${name}" class="btn-sm btn-outline-primary col-1 add-track-button">+</button></li>
-                
+                <li>${title} - ${name}<button onclick="handleTracks.addTrack(this.dataset.title, this.dataset.name, this.id)" 
+                data-title="${title}" data-name="${name}" id="${id}" class="btn-sm btn-outline-primary col-1 add-track-button">+</button></li>
                 `; 
+
                 displaySearchedResult.innerHTML = content;
             }   
         }
@@ -80,12 +85,11 @@ const displayController = {
         const playlists = document.getElementById("playlists");
         let i = 0;
         let content = ``;
-        console.log(ultimatePlaylist)
         
         for ( let song of ultimatePlaylist ) {
             
             content += `
-            <li>${i++}. ${song.artist} - ${song.name} <button id="${i++}" onclick="handleTracks.removeTrack(this.id)" class="btn-sm btn-outline-danger delete-track-button">Remove track</button> </li> 
+            <li>${i++}. ${song.artist} - ${song.name} <button id="${song.id}" onclick="handleTracks.removeTrack(this.id)" class="btn-sm btn-outline-danger delete-track-button">Remove track</button> </li> 
             `
         }
         playlists.innerHTML = content;
