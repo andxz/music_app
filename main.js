@@ -44,16 +44,20 @@ const handleTracks = {
     addTrack: function(title, name, id) {
         const ultimatePlaylist = JSON.parse(localStorage.getItem('ultimatePlaylist'));
         let newTrack = new track(title, name, id)
-        console.log(newTrack);
         ultimatePlaylist.push(newTrack) //Push the track to the ultimatePlaylist array
         localStorage.setItem("ultimatePlaylist", JSON.stringify(ultimatePlaylist)); //Save it to localStorage
     },
 
     removeTrack: function(id) {
         const ultimatePlaylist = JSON.parse(localStorage.getItem('ultimatePlaylist'));
-        theIndex = ultimatePlaylist.indexOf(id);
 
-        console.log(theIndex)
+        //Get the index of the song to delete based on its unique id
+        var index = ultimatePlaylist.findIndex(function(element){return element.id === id}) 
+        
+        ultimatePlaylist.splice(index, 1); 
+        //When deleted from the array, update localstorage
+        localStorage.setItem("ultimatePlaylist", JSON.stringify(ultimatePlaylist));
+        location.reload() 
     }
 }
 
@@ -74,7 +78,6 @@ const displayController = {
                 <li>${title} - ${name}<button onclick="handleTracks.addTrack(this.dataset.title, this.dataset.name, this.id)" 
                 data-title="${title}" data-name="${name}" id="${id}" class="btn-sm btn-outline-primary col-1 add-track-button">+</button></li>
                 `; 
-
                 displaySearchedResult.innerHTML = content;
             }   
         }
