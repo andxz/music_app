@@ -27,3 +27,16 @@ header {
 section {
     margin-bottom: 20px;
 }
+
+button {
+    margin-left: 20px;
+}
+
+#playlists {
+    font-size: 1.4em;
+    line-height: 2em;
+}
+
+li {
+    list-style-type: decimal-leading-zero;
+}

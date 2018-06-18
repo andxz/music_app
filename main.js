@@ -76,7 +76,7 @@ const displayController = {
                 
                 content += `
                 <li>${title} - ${name}<button onclick="handleTracks.addTrack(this.dataset.title, this.dataset.name, this.id)" 
-                data-title="${title}" data-name="${name}" id="${id}" class="btn-sm btn-outline-primary col-1 add-track-button">+</button></li>
+                data-title="${title}" data-name="${name}" id="${id}" class="btn btn-outline-primary add-track-button">Add track</button></li>
                 `; 
                 displaySearchedResult.innerHTML = content;
             }   
@@ -86,13 +86,13 @@ const displayController = {
     playlist: function() {
         const ultimatePlaylist = JSON.parse(localStorage.getItem('ultimatePlaylist'));
         const playlists = document.getElementById("playlists");
-        let i = 0;
         let content = ``;
         
         for ( let song of ultimatePlaylist ) {
             
             content += `
-            <li>${i++}. ${song.artist} - ${song.name} <button id="${song.id}" onclick="handleTracks.removeTrack(this.id)" class="btn-sm btn-outline-danger delete-track-button">Remove track</button> </li> 
+            <li>${song.artist} - ${song.name} <button id="${song.id}" onclick="handleTracks.removeTrack(this.id)" 
+            class="btn btn-outline-danger delete-track-button">Remove track</button> </li> 
             `
         }
         playlists.innerHTML = content;
