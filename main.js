@@ -78,12 +78,14 @@ const displayController = {
     playlist: function() {
         const ultimatePlaylist = JSON.parse(localStorage.getItem('ultimatePlaylist'));
         const playlists = document.getElementById("playlists");
+        let i = 0;
         let content = ``;
         console.log(ultimatePlaylist)
         
         for ( let song of ultimatePlaylist ) {
+            
             content += `
-            <li>${song.artist} - ${song.name} <button onclick="handleTracks.removeTrack(this.dataset.song)" class="btn-sm btn-outline-danger delete-track-button">Remove track</button> </li> 
+            <li>${i++}. ${song.artist} - ${song.name} <button id="${i++}" onclick="handleTracks.removeTrack(this.id)" class="btn-sm btn-outline-danger delete-track-button">Remove track</button> </li> 
             `
         }
         playlists.innerHTML = content;
