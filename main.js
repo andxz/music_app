@@ -44,5 +44,39 @@ const handleTracks = {
     },
 }
 
+const displayController = {
+
+    search: function() {
+        
+
+    }
+
+}
+
+
+//var factText = document.querySelector('#factText');
+var nameInput = document.querySelector('#search-form');
+
+nameInput.addEventListener('input', getFactFetch);
+
+    // RÅ DATA Api
+    function getFactFetch(){
+        var name = nameInput.value;
+        
+        if(name != ''){ //3
+          fetch('https://folksa.ga/api/tracks?limit=1000&key=flat_eric')
+          .then(response => response.json())
+          .then( data => {
+          	data = data.filter( ( element ) => {
+              return new RegExp( name, 'ig' ).test( element.title)
+
+            } );
+            console.log(data);
+          })
+          .catch(err => console.log(err)); 
+        }    
+      }
+
+
 //Launch localStorage-check
 handleTracks.checkLocalStorage()
