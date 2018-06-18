@@ -48,7 +48,6 @@ const displayController = {
 
     search: function(data) {
         
-        
         let displaySearchedResult = document.getElementById("searchResults");
         let content = ``;
         for (let track of data) {
@@ -58,16 +57,11 @@ const displayController = {
                 <li>${track.title} - ${artist.name}<button class="btn-sm btn-outline-primary col-2">+</button></li>
                 
                 `; 
-                
                 displaySearchedResult.innerHTML = content;
                 console.log(data);
-            }
-            
+            }   
         }
-        
-        
-    }
-
+    },
 }
 
 
@@ -80,8 +74,8 @@ nameInput.addEventListener('input', getFactFetch);
     function getFactFetch(){
         let name = nameInput.value;
         
-        if(name != ''){ //3
-          fetch('https://folksa.ga/api/tracks?limit=10&key=flat_eric')
+        if(name.length >= 3){
+          fetch('https://folksa.ga/api/tracks?limit=1000&key=flat_eric')
           .then(response => response.json())
           .then( data => {
           	data = data.filter( ( element ) => {
@@ -91,7 +85,7 @@ nameInput.addEventListener('input', getFactFetch);
             displayController.search(data);
           })
           .catch(err => console.log(err)); 
-        }    
+        }
       }
 
 
