@@ -36,12 +36,19 @@ const handleTracks = {
             console.log("there is a playlist saved!!")
         } else {
             const ultimatePlaylist = []; //Define ultimatePlaylist that will collect all the tracks
-            const newTrack = new track("Artist", "Song name"); //Construct a new example track
+            let newTrack = new track("Artist", "Song name"); //Construct a new example track
             ultimatePlaylist.push(newTrack) //Push the track to the ultimatePlaylist array
-
             localStorage.setItem("ultimatePlaylist", JSON.stringify(ultimatePlaylist)); //Save it to localStorage
         }
     },
+    
+    addTrack: function(title, name) {
+        const ultimatePlaylist = JSON.parse(localStorage.getItem('ultimatePlaylist'));
+        let newTrack = new track(title, name)
+        console.log(newTrack);
+        ultimatePlaylist.push(newTrack) //Push the track to the ultimatePlaylist array
+        localStorage.setItem("ultimatePlaylist", JSON.stringify(ultimatePlaylist)); //Save it to localStorage
+    }
 }
 
 const displayController = {
@@ -51,17 +58,28 @@ const displayController = {
         let displaySearchedResult = document.getElementById("searchResults");
         let content = ``;
         for (let track of data) {
-            
+            let title = track.title
+
             for(let artist of track.artists) {
+                let name = artist.name
+                
                 content += `
-                <li>${track.title} - ${artist.name}<button class="btn-sm btn-outline-primary col-2">+</button></li>
+                <li>${title} - ${name}<button onclick="handleTracks.addTrack(this.dataset.title, this.dataset.name)" data-title="${title}" data-name="${name}" class="btn-sm btn-outline-primary col-2 add-track-button">+</button></li>
                 
                 `; 
                 displaySearchedResult.innerHTML = content;
-                console.log(data);
             }   
         }
     },
+    
+    playlist: function() {
+        
+        const ultimatePlaylist = JSON.parse(localStorage.getItem('ultimatePlaylist'));
+        const playlists = document.getElementById("playlists");
+        let content = ``;
+        
+        
+    }
 }
 
 
