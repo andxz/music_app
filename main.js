@@ -63,8 +63,8 @@ const handleTracks = {
 
 const displayController = {
 
-    search: function(data) {
-        
+    searchResultTracks: function(data) {
+        console.log(data)
         let displaySearchedResult = document.getElementById("searchResults");
         let content = `<h2>Search results</h2> `; 
         for (let track of data) {
@@ -76,7 +76,7 @@ const displayController = {
                 
                 content += `
                 <li>${title} - ${name}<button onclick="handleTracks.addTrack(this.dataset.title, this.dataset.name, this.id)" 
-                data-title="${title}" data-name="${name}" id="${id}" class="btn btn-outline-primary add-track-button">Add track</button></li>
+                data-title="${title}" data-name="${name}" id="${id}" class="btn btn-outline-success add-track-button">Add track</button></li>
                 `; 
                 displaySearchedResult.innerHTML = content;
             }   
@@ -91,8 +91,12 @@ const displayController = {
         for ( let song of ultimatePlaylist ) {
             
             content += `
-            <li>${song.artist} - ${song.name} <button id="${song.id}" onclick="handleTracks.removeTrack(this.id)" 
-            class="btn btn-outline-danger delete-track-button">Remove track</button> </li> 
+            <tr>
+            <td>${song.name}</td>
+            <td>${song.artist}</td>
+            <td><button id="${song.id}" onclick="handleTracks.removeTrack(this.id)" 
+            class="btn btn-outline-danger delete-track-button">Remove track</button></td>
+            </tr>
             `
         }
         playlists.innerHTML = content;
@@ -108,20 +112,18 @@ nameInput.addEventListener('input', getFactFetch);
     // RÅ DATA Api
     function getFactFetch(){
         let name = nameInput.value;
-        
         if(name.length >= 3){
-          fetch('https://folksa.ga/api/tracks?limit=1000&key=flat_eric')
-          .then(response => response.json())
-          .then( data => {
-          	data = data.filter( ( element ) => {
-              return new RegExp( name, 'ig' ).test( element.title)
-
-            } );
-            displayController.search(data);
-          })
-          .catch(err => console.log(err)); 
+            fetch('https://folksa.ga/api/tracks?limit=1000&key=flat_eric')
+            .then(response => response.json())
+            .then( data => {
+                data = data.filter( ( item ) => {
+                return new RegExp( name, 'ig' ).test( item.title )
+            });
+            displayController.searchResultTracks(data);
+            })
+            .catch(err => console.log(err)); 
         }
-      }
+    }
 
 
 //Launch localStorage-check

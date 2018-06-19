@@ -6,6 +6,8 @@ form {
 main {
     max-width: 960px;
     margin: 0 auto;
+    padding: 50px;
+    background: rgba(0, 0, 0, 0.5);
 }
 
 input {
@@ -20,7 +22,6 @@ input {
 }
 
 header {
-    margin-top: 30px;
     text-align: center;
 }
 
@@ -33,10 +34,18 @@ button {
 }
 
 #playlists {
-    font-size: 1.4em;
-    line-height: 2em;
+    font-size: 1.2em;
+    line-height: 2.2em;
 }
 
 li {
     list-style-type: decimal-leading-zero;
+}
+
+thead {
+    text-transform: uppercase;
+}
+
+h1 {
+    margin-bottom: 20px;
 }
