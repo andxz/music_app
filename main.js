@@ -46,6 +46,7 @@ const handleTracks = {
         let newTrack = new track(title, name, id)
         ultimatePlaylist.push(newTrack) //Push the track to the ultimatePlaylist array
         localStorage.setItem("ultimatePlaylist", JSON.stringify(ultimatePlaylist)); //Save it to localStorage
+        modifierController.replaceAddButton(id)
     },
 
     removeTrack: function(id) {
@@ -75,8 +76,8 @@ const displayController = {
                 let name = artist.name
                 
                 content += `
-                <li>${title} - ${name}<button onclick="handleTracks.addTrack(this.dataset.title, this.dataset.name, this.id)" 
-                data-title="${title}" data-name="${name}" id="${id}" class="btn btn-outline-success add-track-button">Add track</button></li>
+                <li class="search-results">${title} - ${name} <button onclick="handleTracks.addTrack(this.dataset.title, this.dataset.name, this.id)" 
+                data-title="${title}" data-name="${name}" id="${id}" class="btn-sm btn-outline-primary add-track-button">Add track</button></li>
                 `; 
                 displaySearchedResult.innerHTML = content;
             }   
@@ -101,6 +102,19 @@ const displayController = {
         }
         playlists.innerHTML = content;
     }
+}
+
+const modifierController = {
+
+    replaceAddButton: function(id) {
+        let addBtn = document.getElementById(id);
+        let span = document.createElement('span');
+        span.classList.add("badge-primary");
+        span.classList.add("badge");
+        span.innerText = "TRACK ADDED!";
+
+        addBtn.replaceWith(span)
+    },
 }
 
 

@@ -30,7 +30,7 @@ section {
 }
 
 button {
-    margin-left: 20px;
+    margin-left: 15px;
 }
 
 #playlists {
@@ -48,4 +48,12 @@ thead {
 
 h1 {
     margin-bottom: 20px;
+}
+
+.badge {
+    margin-left: 15px;
+}
+
+.search-results {
+    line-height: 2.3em;
 }
