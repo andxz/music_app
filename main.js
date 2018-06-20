@@ -132,14 +132,17 @@ nameInput.addEventListener('input', getFactFetch);
                 caches.match(url).then(function(response) {
                   if (response) {
                     response.json().then(function updateFromCache(json) {
-                      let results = json;
-                      results.created = new Date();
-                      displayController.searchResultTracks(results);
-                      console.log('Here comes the cache data' + results)
+                    let results = json;
+                    results = results.filter( ( item ) => {
+                    return new RegExp( name, 'ig' ).test( item.title )
                     });
-                  }
+                    results.created = new Date();
+                    displayController.searchResultTracks(results);
+                    console.log('Here comes the cache data' + results)
                 });
-            }  
+            }
+        });
+    }  
 
             fetch(url)
             .then(response => response.json())
