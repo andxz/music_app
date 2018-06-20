@@ -21,7 +21,7 @@ form {
 }
 
 main {
-    max-width: 960px;
+    max-width: 920px;
     margin: 0 auto;
     padding: 50px;
     background: rgba(0, 0, 0, 0.8);
@@ -75,4 +75,10 @@ h1 {
 
 td {
     font-size: 1.1em;
+}
+
+.img-container {
+    width: 80%;
+    margin: 0 auto;
+    margin-bottom: 20px;
 }

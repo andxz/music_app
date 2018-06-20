@@ -7,6 +7,7 @@ const filesToCache = [
     '/css/style.css',
     '/manifest.json',
     '/images/background3.jpg',
+    '/images/ultimateplaylist-logo.png',
     '/images/icon.png'
   ];
 
