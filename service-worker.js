@@ -1,10 +1,12 @@
-var dataCacheName = 'music-data';
-var cacheName = 'music-app-pwa';
-var filesToCache = [
+const dataCacheName = 'music-data';
+const cacheName = 'music-app-pwa';
+const filesToCache = [
     '/',
     '/index.html',
     '/main.js',
     '/css/style.css',
+    '/manifest.json',
+    '/images/icon.svg'
   ];
 
 self.addEventListener('install', function(e) {
@@ -22,7 +24,7 @@ self.addEventListener('activate', function(e) {
     e.waitUntil(
       caches.keys().then(function(keyList) {
         return Promise.all(keyList.map(function(key) {
-          if (key !== cacheName) {
+            if (key !== cacheName && key !== dataCacheName) {           
             console.log('[ServiceWorker] Removing old cache', key);
             return caches.delete(key);
           }

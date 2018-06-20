@@ -65,7 +65,6 @@ const handleTracks = {
 const displayController = {
 
     searchResultTracks: function(data) {
-        console.log(data)
         let displaySearchedResult = document.getElementById("searchResults");
         let content = `<h2>Search results</h2> `; 
         for (let track of data) {
@@ -126,14 +125,30 @@ nameInput.addEventListener('input', getFactFetch);
     // RÅ DATA Api
     function getFactFetch(){
         let name = nameInput.value;
-        if(name.length >= 3){
-            fetch('https://folksa.ga/api/tracks?limit=1000&key=flat_eric')
+        const url = 'https://folksa.ga/api/tracks?limit=1000&key=flat_eric';
+
+        if(name.length >= 3){ 
+            if ('caches' in window) {
+                caches.match(url).then(function(response) {
+                  if (response) {
+                    response.json().then(function updateFromCache(json) {
+                      let results = json;
+                      results.created = new Date();
+                      displayController.searchResultTracks(results);
+                      console.log('Here comes the cache data' + results)
+                    });
+                  }
+                });
+            }  
+
+            fetch(url)
             .then(response => response.json())
             .then( data => {
                 data = data.filter( ( item ) => {
                 return new RegExp( name, 'ig' ).test( item.title )
             });
             displayController.searchResultTracks(data);
+            console.log('Fetch data!!!')
             })
             .catch(err => console.log(err)); 
         }
@@ -150,4 +165,3 @@ if ('serviceWorker' in navigator) {
              .register('/service-worker.js')
              .then(function() { console.log('Service Worker Registered'); });
   }
-
