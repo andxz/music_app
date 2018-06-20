@@ -24,10 +24,8 @@ main {
     max-width: 960px;
     margin: 0 auto;
     padding: 50px;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.8);
 }
-
-
 
 input {
     margin-right: 4px;
@@ -57,10 +55,6 @@ button {
     line-height: 2.2em;
 }
 
-li {
-    list-style-type: decimal-leading-zero;
-}
-
 thead {
     text-transform: uppercase;
 }
@@ -77,4 +71,8 @@ h1 {
 
 .search-results {
     line-height: 2.3em;
+}
+
+td {
+    font-size: 1.1em;
 }
