@@ -143,3 +143,11 @@ nameInput.addEventListener('input', getFactFetch);
 //Launch localStorage-check
 handleTracks.checkLocalStorage()
 displayController.playlist()
+
+
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker
+             .register('/service-worker.js')
+             .then(function() { console.log('Service Worker Registered'); });
+  }
+
