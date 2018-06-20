@@ -6,6 +6,7 @@ const filesToCache = [
     '/main.js',
     '/css/style.css',
     '/manifest.json',
+    '/images/background3.jpg',
     '/images/icon.png'
   ];
 
