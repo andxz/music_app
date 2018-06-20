@@ -20,47 +20,46 @@
 </head>
 
 <body>
-    <main>
-        <header>
-            <div class="">
-                <h1>Music PWA</h1>
-            </div>
-        </header>   
-    
-        <section class="flex">
-            <form class="form-inline">
-                <input type="text" id="search-form" class="form-control-lg" placeholder="Search for track (minimum 3 characters)" name="search-form" />
-                <!--<button type="submit" class="btn-lg btn-outline-primary col-2">Search</button>-->
-            </form>
-        </section>
+    <div class="background">
+        <main>
+            <header>
+                    <h1>Music PWA</h1>
+            </header>   
         
-        <section id="searchResults">
+            <section class="flex">
+                <form class="form-inline">
+                    <input type="text" id="search-form" class="form-control-lg" placeholder="Search for track (minimum 3 characters)" name="search-form" />
+                    <!--<button type="submit" class="btn-lg btn-outline-primary col-2">Search</button>-->
+                </form>
+            </section>
             
-        </section>
+            <section id="searchResults">
+                
+            </section>
 
-        <section>
-            <h1>Your Ultimate Playlist</h1>
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                      <th scope="col"><span class="text-primary">Artist</span></th>
-                      <th scope="col"><span class="text-primary">Song</span></th>
-                      <th scope="col"></th>
-                    </tr>
-                  </thead>
-                  <tbody  id="playlists">
+            <section>
+                <h1>Your Ultimate Playlist</h1>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                        <th scope="col"><span class="text-primary">Artist</span></th>
+                        <th scope="col"><span class="text-primary">Song</span></th>
+                        <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody  id="playlists">
 
-                  </tbody>
-            </table>
-        </section>
+                    </tbody>
+                </table>
+            </section>
 
-    </main>
+        </main>
 
-    <footer>
+        <footer>
 
-        <script src="main.js"></script>
-    </footer>
-    
+            <script src="main.js"></script>
+        </footer>
+    </div>
 </body>
 
 </html>
