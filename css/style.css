@@ -90,10 +90,10 @@ button {
 
 td {
     font-size: 1.4em;
-  
-.badge {
-    margin-left: 15px;
+}
 
+#searchResults, .badge {
+    margin-left: 15px;
 }
 
 .img-container {
