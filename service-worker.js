@@ -6,9 +6,9 @@ const filesToCache = [
     '/main.js',
     '/css/style.css',
     '/manifest.json',
+    '/images/icon.png',
     '/images/background3.jpg',
-    '/images/ultimateplaylist-logo.png',
-    '/images/icon.png'
+    '/images/ultimateplaylist_logo.png',
   ];
 
 self.addEventListener('install', function(e) {
