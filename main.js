@@ -13,7 +13,6 @@ class getData {
         return fetch(this.baseUrl + this.type + "/" + id + "?" + this.key)
         .then((response) => response.json())
     }
-
 }
 
 //Class & Constructor for creating tracks to the ultimatePlaylist
@@ -87,7 +86,6 @@ const displayController = {
         let content = ``;
         
         for ( let song of ultimatePlaylist ) {
-            
             content += `
             <tr>
             <td>${song.artist}</td>
