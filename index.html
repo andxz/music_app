@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootswatch/4.1.1/superhero/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" media="screen" href="css/style.css" />
+    <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
+
     <link rel="manifest" href="/manifest.json">
 
     <!-- Add to home screen for Safari on iOS -->
@@ -30,7 +32,6 @@
         <section class="flex">
             <form class="form-inline">
                 <input type="text" id="search-form" class="form-control-lg" placeholder="Search for track (minimum 3 characters)" name="search-form" />
-                <!--<button type="submit" class="btn-lg btn-outline-primary col-2">Search</button>-->
             </form>
         </section>
         
@@ -55,7 +56,7 @@
                     </tr>
                 </thead>
                 <tbody  id="playlists">
-
+                    <!-- THIS IS WHERE THE PLAYLIST IS GENERATED -->
                 </tbody>
             </table>
         </section>
@@ -63,9 +64,17 @@
     </main>
 
     <footer>
-
-        <script src="main.js"></script>
+        <section class="footer-content">
+            <a class="footer-txt" href="https://github.com/andxz/music_app" target="_blank"><i class="fab fa-github-square fa-2x"></i><br>Github Repo</a>
+         </section>
+         <div class="labels">
+            <a href="https://github.com/emmichiwa" target="_blank"><span class="badge badge-pill badge-primary">Emmelie</span></a>
+            <a href="https://github.com/niclasv" target="_blank"> <span class="badge badge-pill badge-danger">Niclas</span>
+            <a href="https://github.com/Monkitron" target="_blank"><span class="badge badge-pill badge-success">Monica</span></a>
+            <a href="https://github.com/andxz" target="_blank"><span class="badge badge-pill badge-info">Andrez</span></a>
+        </div>
     </footer>
+    <script src="main.js"></script>
 </body>
 
 </html>

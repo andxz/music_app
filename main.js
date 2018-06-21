@@ -33,9 +33,7 @@ const handleTracks = {
         //check if there are tracks saved in localStorage, if not create the playlist and a track as an example
         const ultimatePlaylist = JSON.parse(localStorage.getItem('ultimatePlaylist'));
 
-        if(ultimatePlaylist) {
-            console.log("there is a playlist saved!!")
-        } else {
+        if(!ultimatePlaylist) {
             const ultimatePlaylist = []; //Define ultimatePlaylist that will collect all the tracks
             localStorage.setItem("ultimatePlaylist", JSON.stringify(ultimatePlaylist)); //Save it to localStorage
         }
@@ -106,24 +104,25 @@ const displayController = {
 const modifierController = {
 
     replaceAddButton: function(id) {
+        //This is to create some feedback when adding a track
+        //and so that you cant add the same over and over,
+        //replacing the addbutton with a badge saying "track added"
         let addBtn = document.getElementById(id);
         let span = document.createElement('span');
-        span.classList.add("badge-primary");
-        span.classList.add("badge");
+        span.classList.add("badge-primary", "badge");
         span.innerText = "TRACK ADDED!";
 
-        addBtn.replaceWith(span)
+        addBtn.replaceWith(span) //Switch the button to the badge
     },
 }
 
-
-//const factText = document.querySelector('#factText');
+//I know we should have implemented the below function in a module as a method 
+//I hope its ok if we're leaving it hanging in the global scope this time!
 const nameInput = document.querySelector('#search-form');
-
-nameInput.addEventListener('input', getFactFetch);
+nameInput.addEventListener('input', searchTracks);
 
     // RÅ DATA Api
-    function getFactFetch(){
+    function searchTracks(){
         let name = nameInput.value;
         const spinner = document.getElementsByClassName('spinner')[0];
 
@@ -147,7 +146,6 @@ nameInput.addEventListener('input', getFactFetch);
             }
         });
     }  
-
             fetch(url)
             .then(response => response.json())
             .then( data => {
@@ -162,13 +160,15 @@ nameInput.addEventListener('input', getFactFetch);
     }
 
 
+
 //Launch localStorage-check
 handleTracks.checkLocalStorage()
+//Display the playlist
 displayController.playlist()
 
-
+//Hello little service-worker!
 if ('serviceWorker' in navigator) {
     navigator.serviceWorker
-             .register('/service-worker.js')
-             .then(function() { console.log('Service Worker Registered'); });
-  }
+    .register('/service-worker.js')
+    .then(function() { console.log('Service Worker Registered'); });
+}

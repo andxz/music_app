@@ -1,5 +1,6 @@
 body {
-    background-attachment: fixed;
+    background-image: linear-gradient(rgba(30,53,75,0.95), rgba(30,53,75,0.85)), url("../images/background3.jpg");
+    background-attachment: fixed;   
     background-position: bottom center;
     background-size: cover;
     -webkit-background-size: cover;
@@ -13,9 +14,9 @@ form {
 }
 
 main {
-    max-width: 600px;
+    max-width: 900px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 30px;
     background: rgba(0, 0, 0, 0.8);
 }
 
@@ -58,7 +59,7 @@ thead {
 h1 {
     margin-bottom: 20px;
     text-transform: uppercase;
-    font-size: 1.5em;
+    font-size: 1.8em;
 }
 
 h2 {
@@ -82,8 +83,7 @@ li.search-results{
 }
 
 td {
-    font-size: 1.1em;
-    width: 60%; 
+    font-size: 1.4em;
 }
 
 .img-container {
@@ -91,6 +91,30 @@ td {
     margin: 0 auto;
     margin-bottom: 20px;
 }
+
+.footer-content {
+    color: #FFFFFF;
+    text-align: center;
+    max-width: 960px;
+    margin: 0 auto;
+    font-size: 1.5em;
+    margin-top: 30px;
+}
+
+.labels, .badge {
+    font-size: 1em;
+    margin-top: 5px;
+    text-align: center;
+}
+
+.footer-content, a {
+    color: #FFF;
+}
+a:hover {
+    color: #FFF;
+    text-decoration: none;
+}
+
 
 /*****************
 ----- SPINNER ----
@@ -154,7 +178,8 @@ td {
 }
 
 
-@media screen and (min-width: 600px){
+/** MOBIL MEDIA QUEERY **/
+@media screen and (max-width: 600px){
 
     body{
         background-image: linear-gradient(rgba(30,53,75,0.95), rgba(30,53,75,0.85)), url("../images/background3.jpg");
@@ -163,6 +188,7 @@ td {
     main{
         max-width: 600px;
         padding: 25px; 
+        margin: 0 5px 0 5px;
     }
 
     #playlists {
@@ -177,17 +203,32 @@ td {
     }
 
     td {
-        font-size: 0.9em;
+        font-size: 0.8em;
+        line-height: 1.6em;
         width: auto; 
+        height: 65px;
+    }
+
+    .img-container {
+        margin-bottom: 0px;     
+        width: 100%;
     }
 
 }   
 
-@media screen and (min-width: 900px){
+/** TABLET MEDIA QUEERY **/
+@media screen
+and (min-width: 600px)
+and (max-width: 900px) {
+
+    body{
+        background-image: linear-gradient(rgba(30,53,75,0.95), rgba(30,53,75,0.85)), url("../images/background3.jpg");
+    }
 
     main {
         max-width: 920px;
-        padding: 50px; 
+        padding: 50px;
+        margin: 0 5px 0 5px;
     }
 
     td {
