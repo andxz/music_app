@@ -125,8 +125,12 @@ nameInput.addEventListener('input', getFactFetch);
     // RÅ DATA Api
     function getFactFetch(){
         let name = nameInput.value;
-        const url = 'https://folksa.ga/api/tracks?limit=1000&key=flat_eric';
+        const spinner = document.getElementsByClassName('spinner')[0];
 
+        const url = 'https://folksa.ga/api/tracks?limit=1000&key=flat_eric';
+        if(name.length >= 1) { spinner.classList.remove('hidden') 
+        } else if (name.length === 0 ) { spinner.classList.add('hidden') 
+        }
         if(name.length >= 3){ 
             if ('caches' in window) {
                 caches.match(url).then(function(response) {
