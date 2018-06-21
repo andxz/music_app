@@ -2,7 +2,9 @@
 <b>By:</b> Andrez, Niclas, Monica and Emmelie
 
 What it is:
+
 This is a simple Application for creating your ultimate playlist using tracks from the folksa.ga music API
+
 You can search for tracks, add them to the playlist but also delete tracks from the playlist.
 It's a progressive web application so thanks to a service-worker(thanks buddy) it caches both the shell (html, css, javascript, images) but also the data from the API which enables it to work offline!
 
