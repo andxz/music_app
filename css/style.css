@@ -1,6 +1,4 @@
-.background {
-    width: 100%;
-    height: 100vh;
+body {
     background-image: linear-gradient(rgba(30,53,75,0.95), rgba(30,53,75,0.85)), url("../images/background3.jpg");
     background-attachment: fixed;
     background-position: bottom center;
@@ -8,11 +6,6 @@
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
-}
-
-.background:before{
-    content: "";
-    opacity: 0.1;
 }
 
 form {
