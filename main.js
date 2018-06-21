@@ -92,10 +92,10 @@ const displayController = {
             
             content += `
             <tr>
-            <td>${song.name}</td>
             <td>${song.artist}</td>
+            <td>${song.name}</td>
             <td><button id="${song.id}" onclick="handleTracks.removeTrack(this.id)" 
-            class="btn btn-outline-danger delete-track-button">Remove track</button></td>
+            class="btn btn-outline-danger delete-track-button">X</button></td>
             </tr>
             `
         }
