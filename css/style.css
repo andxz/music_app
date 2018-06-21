@@ -7,11 +7,6 @@ body {
     -o-background-size: cover;
 }
 
-form {
-    width: 100%;
-    margin: 25px 0 25px 0;
-}
-
 main {
     max-width: 600px;
     margin: 0 auto;
@@ -19,19 +14,49 @@ main {
     background: rgba(0, 0, 0, 0.8);
 }
 
+header {
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    font-size: 1.5em;
+}
+
+h2 {
+    font-size: 1.2em;
+}
+
+thead {
+    text-transform: uppercase;
+}
+
+td {
+    font-size: 1.1em;
+    width: 60%; 
+}
+
+form {
+    width: 100%;
+    margin: 25px 0 25px 0;
+}
+
 input {
     margin-right: 4px;
     width: 100%;
 }
 
-.flex {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+input#search-form.form-control-lg{
+    font-size: 1em; 
 }
 
-header {
-    text-align: center;
+.search-results {
+    line-height: 2.3em;
+}
+
+li.search-results{
+    font-size: 0.9em;
 }
 
 section {
@@ -46,44 +71,20 @@ button {
     font-size: 0.8em; 
 }
 
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+
 #playlists {
     font-size: 0.9em;
     line-height: 1.5em;
 }
 
-thead {
-    text-transform: uppercase;
-}
-
-h1 {
-    margin-bottom: 20px;
-    text-transform: uppercase;
-    font-size: 1.5em;
-}
-
-h2 {
-    font-size: 1.2em;
-}
-
-input#search-form.form-control-lg{
-    font-size: 1em; 
-}
-
 .badge {
     margin-left: 15px;
-}
-
-.search-results {
-    line-height: 2.3em;
-}
-
-li.search-results{
-    font-size: 0.9em;
-}
-
-td {
-    font-size: 1.1em;
-    width: 60%; 
 }
 
 .img-container {
@@ -103,7 +104,6 @@ td {
     text-align: center;
     font-size: 30px;
 }
-
 
 .spinner > div {
     background-color: #FFF;
@@ -153,7 +153,6 @@ td {
     display: none;
 }
 
-
 @media screen and (min-width: 600px){
 
     body{
@@ -163,11 +162,6 @@ td {
     main{
         max-width: 600px;
         padding: 25px; 
-    }
-
-    #playlists {
-        font-size: 1.2em;
-        line-height: 2.2em;
     }
 
     h1 {
@@ -181,6 +175,10 @@ td {
         width: auto; 
     }
 
+    #playlists {
+        font-size: 1.2em;
+        line-height: 2.2em;
+    }
 }   
 
 @media screen and (min-width: 900px){
@@ -194,11 +192,11 @@ td {
         font-size: 1.1em;
     }
 
-    li.search-results{
-        font-size: 1.1em;
-    }
-    
     input#search-form.form-control-lg{
         font-size: 1.2em; 
+    }
+
+    li.search-results{
+        font-size: 1.1em;
     }
 }
